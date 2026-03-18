@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+batch*.json
+batch*.jsonl
+batch*.csv
+progreso.json
+inventario.csv
+*.tmp
+node_modules/
+.gemini/
+*log.txt

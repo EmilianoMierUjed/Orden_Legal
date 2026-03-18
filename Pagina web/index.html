@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrdenLegal - Organizamos el archivo de tu despacho</title>
+    <meta name="description"
+        content="¿Tu despacho tiene miles de documentos desordenados? Nosotros los organizamos por ti en menos de 48 horas. Confidencial, rápido y sin complicaciones.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --surface-color: #1e293b;
+            --primary-color: #2563eb;
+            /* Gold */
+            --primary-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Nav */
+        nav {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(11, 17, 32, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+            -webkit-text-fill-color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* How it Works */
+        .process {
+            padding: 100px 0;
+            background-color: #0f172a;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--surface-color);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .step-card:hover .step-number {
+            color: rgba(212, 175, 55, 0.1);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Focus */
+        .pricing {
+            padding: 100px 0;
+            background: var(--bg-color);
+        }
+
+        .pricing-card {
+            background: linear-gradient(180deg, var(--surface-color) 0%, rgba(30, 41, 59, 0) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        }
+
+        .price-huge {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            margin: 20px 0;
+        }
+
+        .price-huge span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+
+        .pricing-feature svg {
+            color: var(--primary-color);
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Security NDA */
+        .security {
+            padding: 80px 0;
+            background-color: #070a14;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .security-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .security-text {
+            flex: 1;
+        }
+
+        .security-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .security-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .security-badge {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            flex: 0.8;
+            text-align: left;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .security-badge h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .security-list {
+            list-style: none;
+        }
+
+        .security-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .security-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--bg-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .security-wrapper {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .stat-item {
+                text-align: center;
+            }
+
+            .pricing-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 16 20 22 24 16Z" />
+                    <path d="M0 16 4 22 8 16Z" />
+                    <path d="M12 3v19" />
+                    <path d="M3 7h18" />
+                </svg>
+                OrdenLegal
+            </div>
+            <div class="nav-links">
+                <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-primary">Solicitar
+                    Servicio</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge">Prueba Gratuita — 1 Expediente Completo</div>
+            <h1>¿Tu despacho tiene miles de<br><span>documentos sin orden?</span></h1>
+            <p>Nos compartes una carpeta en Google Drive con tus expedientes. En menos de 48 horas te los
+                devolvemos organizados por materia, tipo y fecha, listos para consulta.</p>
+
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+                <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-primary">Probar Gratis con 1
+                    Expediente</a>
+                <a href="#como-funciona" class="btn-outline">¿Cómo funciona?</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">1,200+</span>
+                    <span class="stat-label">Documentos procesados en prueba</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">< 48h</span>
+                    <span class="stat-label">Tiempo máximo de entrega</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">NDA</span>
+                    <span class="stat-label">Acuerdo de confidencialidad firmado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Así de simple funciona</h2>
+                <p>Tú sigues litigando, nosotros nos encargamos del desorden.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                    </div>
+                    <h3>Firmamos y te compartimos una carpeta</h3>
+                    <p>Primero firmamos un acuerdo de confidencialidad. Después te enviamos el enlace a una carpeta
+                        privada en Google Drive donde subes tus documentos (PDF, Word, escaneados). Sin límite de
+                        peso.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </div>
+                    <h3>Nosotros leemos y clasificamos todo</h3>
+                    <p>Revisamos cada documento: identificamos si es una demanda, sentencia, contrato o acuerdo.
+                        Detectamos la materia (Civil, Penal, Amparo, Mercantil) y extraemos la fecha relevante.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <h3>Recibes todo ordenado en la misma carpeta</h3>
+                    <p>En máximo 48 horas, dentro de la misma carpeta de Drive encontrarás tus documentos
+                        renombrados y organizados en subcarpetas por materia y tipo, listos para consultarlos al
+                        instante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparación vs Pasante -->
+    <section style="padding: 80px 0; background: var(--bg-color);">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué no ponerle esa tarea a un pasante?</h2>
+                <p>Porque la cuenta no sale.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 800px; margin: 0 auto;">
+                <div class="step-card" style="text-align: center;">
+                    <h3 style="color: var(--text-muted); margin-bottom: 20px;">👤 Un pasante</h3>
+                    <p style="font-size: 2rem; font-family: 'Playfair Display', serif; margin-bottom: 10px;">~80 horas
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">para organizar 1,200 documentos a mano
+                        (abrirlos, leerlos, renombrarlos, moverlos a carpetas)</p>
+                    <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.85rem;">+ Errores humanos
+                        inevitables<br>+ Distracción y rotación de personal</p>
+                </div>
+                <div class="step-card"
+                    style="text-align: center; border-color: var(--primary-color); position: relative;">
+                    <div
+                        style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">
+                        ORDENLEGAL</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">⚡ Nuestro servicio</h3>
+                    <p style="font-size: 2rem; font-family: 'Playfair Display', serif; margin-bottom: 10px;">&lt; 48
+                        horas
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">los mismos 1,200 documentos organizados,
+                        renombrados y en carpetas</p>
+                    <p style="margin-top: 15px; color: var(--primary-color); font-size: 0.85rem;">✓ Sin errores de
+                        dedo<br>✓ Clasificación consistente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Paquetes</h2>
+                <p>Elige según el tamaño del archivo que necesitas organizar. Sin sorpresas, sin costos adicionales.</p>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Paquete 1 -->
+                <div class="pricing-card" style="padding: 40px 30px;">
+                    <h3>Organización Rápida</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Para poner al día el archivo reciente de tu
+                        despacho.</p>
+                    <div class="price-huge" style="font-size: 2.5rem;">
+                        $1,750 <span>MXN</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Pago único</p>
+                    <ul class="security-list" style="margin: 20px 0; text-align: left;">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Hasta 3 GB de documentos</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Clasificación por materia y tipo</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Entrega en 24 horas</li>
+                    </ul>
+                    <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-outline"
+                        style="display: block; margin-top: 20px;">Solicitar</a>
+                </div>
+                <!-- Paquete 2 -->
+                <div class="pricing-card"
+                    style="padding: 40px 30px; border-color: var(--primary-color); position: relative;">
+                    <div
+                        style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">
+                        MÁS POPULAR</div>
+                    <h3>Archivo Histórico</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Para organizar años de expedientes
+                        acumulados.</p>
+                    <div class="price-huge" style="font-size: 2.5rem;">
+                        $4,000 <span>MXN</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Pago único</p>
+                    <ul class="security-list" style="margin: 20px 0; text-align: left;">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Hasta 10 GB de documentos</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Renombrado con fecha y descripción</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Entrega en 48 horas</li>
+                    </ul>
+                    <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-primary"
+                        style="display: block; margin-top: 20px;">Solicitar</a>
+                </div>
+                <!-- Paquete 3 -->
+                <div class="pricing-card" style="padding: 40px 30px;">
+                    <h3>Mantenimiento Mensual</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Para despachos que generan documentos
+                        nuevos cada semana.</p>
+                    <div class="price-huge" style="font-size: 2.5rem;">
+                        $2,500 <span>MXN/mes</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Suscripción mensual
+                    </p>
+                    <ul class="security-list" style="margin: 20px 0; text-align: left;">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Hasta 5 GB mensuales</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Organización continua</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Atención prioritaria por WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-outline"
+                        style="display: block; margin-top: 20px;">Suscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="security">
+        <div class="container security-wrapper">
+            <div class="security-text">
+                <h2>Tus expedientes<br>están seguros</h2>
+                <p>Sabemos que la información de tus clientes es lo más delicado de tu ejercicio profesional. Por eso,
+                    antes de recibir un solo documento, firmamos un <strong>Acuerdo de Confidencialidad</strong>
+                    legalmente vinculante.</p>
+                <p>Los archivos se transfieren por Google Drive (la misma plataforma que usan millones de empresas y
+                    despachos en el mundo). <strong>No almacenamos tus documentos en ningún otro lugar</strong> y
+                    eliminamos nuestro acceso una vez entregado el trabajo.</p>
+            </div>
+            <div class="security-badge">
+                <h4><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg> Nuestro compromiso</h4>
+                <ul class="security-list">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg> Acuerdo de Confidencialidad firmado antes de empezar.</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg> Transferencia segura por Google Drive.</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg> Eliminación de acceso al entregar el trabajo.</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg> Tus documentos nunca se comparten con terceros.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="padding: 80px 0; background: #0f172a;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            <div style="max-width: 750px; margin: 0 auto;">
+                <div style="border-bottom: 1px solid var(--border-color); padding: 25px 0;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">¿Cómo sé que mis documentos están seguros?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Antes de que nos envíes un solo archivo,
+                        firmamos un Acuerdo de Confidencialidad que puedes revisar con calma. Todo se maneja por Google
+                        Drive (la misma herramienta que usan despachos internacionales). Una vez entregado el trabajo,
+                        eliminamos nuestro acceso a la carpeta.</p>
+                </div>
+                <div style="border-bottom: 1px solid var(--border-color); padding: 25px 0;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">¿Qué pasa si algún documento se clasifica
+                        mal?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Lo corregimos sin costo adicional. Por eso
+                        ofrecemos la prueba gratuita con un expediente completo: para que veas la calidad del trabajo
+                        antes de contratar.</p>
+                </div>
+                <div style="border-bottom: 1px solid var(--border-color); padding: 25px 0;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">¿Qué incluye la prueba gratuita?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Nos envías un expediente completo
+                        (el que tú elijas). Te lo devolvemos completamente organizado en carpetas, con cada documento
+                        renombrado por fecha, materia y tipo. Sin compromiso de compra.</p>
+                </div>
+                <div style="border-bottom: 1px solid var(--border-color); padding: 25px 0;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">¿Por qué es más barato que contratar a
+                        alguien?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Un pasante tardaría semanas en organizar
+                        manualmente lo que nosotros entregamos en 48 horas. Nuestro servicio cuesta una fracción del
+                        sueldo mensual de un auxiliar, y el resultado es más consistente que el trabajo manual.</p>
+                </div>
+                <div style="padding: 25px 0;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">¿Qué tipo de archivos aceptan?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">PDF (incluyendo documentos escaneados),
+                        archivos de Word (.docx) y documentos de texto. Básicamente, cualquier formato que se use
+                        normalmente en un juzgado o notaría.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA final -->
+    <section style="padding: 80px 0; background: var(--bg-color); text-align: center;">
+        <div class="container">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 16px;">Pruébalo sin
+                costo con un expediente</h2>
+            <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 30px;">Envíanos un mensaje por
+                WhatsApp, firmamos el acuerdo de confidencialidad y te organizamos un expediente completo gratis para
+                que veas cómo queda.</p>
+            <a href="https://wa.me/message/EPSZJODGWHATD1" target="_blank" class="btn-primary"
+                style="font-size: 1.1rem; padding: 16px 36px;">Escribir por WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OrdenLegal - Servicio especializado de Organización Jurídica. Todos los derechos reservados.
+            </p>
+            <div style="margin-top: 15px; font-size: 0.85rem;">
+                <a href="Legal/aviso_de_privacidad.html"
+                    style="color: var(--text-muted); margin-right: 20px; text-decoration: none;">Aviso de
+                    Privacidad</a>
+                <a href="Legal/terminos_y_condiciones.md"
+                    style="color: var(--text-muted); margin-right: 20px; text-decoration: none;">Términos y
+                    Condiciones</a>
+                <a href="Legal/acuerdo_confidencialidad.md"
+                    style="color: var(--text-muted); text-decoration: none;">Acuerdo de Confidencialidad</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminos y Condiciones - OrdenDigital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --surface-color: #1e293b;
+            --primary-color: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1,
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p,
+        li {
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .updated-at {
+            color: var(--text-muted);
+            margin-top: 0;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Regresar al Inicio
+        </a>
+
+        <h1>Terminos y Condiciones de Uso</h1>
+        <p class="updated-at"><strong>Fecha de ultima actualizacion:</strong> 22 de marzo de 2026</p>
+        <p>Bienvenido a <strong>OrdenDigital</strong>. Estos Términos y Condiciones explican las reglas de uso de
+            nuestra plataforma de organización documental asistida por Inteligencia Artificial. Al entrar o utilizar
+            el servicio, aceptas lo que se establece en este documento.</p>
+
+        <h2>1. Naturaleza del Servicio y Limitacion de Responsabilidad</h2>
+        <ul>
+            <li><strong>Herramienta tecnologica:</strong> OrdenDigital es una plataforma de software orientada a
+                procesar, organizar e indexar documentos digitales suministrados por el usuario mediante modelos de IA
+                (incluyendo la API de Google Gemini).</li>
+            <li><strong>Sin asesoria legal:</strong> OrdenDigital no sustituye asesoría, consejo, dictamen o
+                representación legal.</li>
+            <li><strong>Revision humana obligatoria:</strong> La IA puede equivocarse. Por eso, el usuario debe
+                revisar y validar cualquier resultado antes de usarlo en procesos judiciales, administrativos,
+                operativos o de negocio.</li>
+        </ul>
+
+        <h2>2. Obligaciones del Usuario respecto a los Documentos</h2>
+        <ul>
+            <li><strong>Derecho de uso y traslado:</strong> El usuario declara que cuenta con los derechos,
+                autorizaciones o mandatos necesarios para cargar documentos, expedientes y datos personales a la
+                plataforma.</li>
+            <li><strong>Indemnizacion:</strong> El usuario se obliga a sacar en paz y a salvo a OrdenDigital, e
+                indemnizarlo, frente a reclamaciones derivadas de carga no autorizada de expedientes o datos de
+                terceros, o por violaciones al secreto profesional.</li>
+        </ul>
+
+        <h2>3. Confidencialidad e Inteligencia Artificial</h2>
+        <ul>
+            <li><strong>Uso de Gemini API:</strong> OrdenDigital utiliza infraestructura de Google Cloud para el
+                procesamiento de texto.</li>
+            <li><strong>No entrenamiento con datos del usuario:</strong> Conforme a los compromisos del proveedor,
+                la informacion procesada no se usa para entrenar modelos fundamentales.</li>
+            <li><strong>Marco complementario:</strong> Las obligaciones de confidencialidad se rigen ademas por el
+                acuerdo privado de confidencialidad formalizado durante el proceso de alta y por el Aviso de Privacidad
+                vigente.</li>
+        </ul>
+
+        <h2>4. Prestadores de Servicios de Certificacion (PSC) e Integridad</h2>
+        <ul>
+            <li><strong>Certificacion NOM-151:</strong> La plataforma podra apoyarse en un PSC autorizado por la
+                Secretaria de Economia para fortalecer trazabilidad e integridad documental.</li>
+            <li><strong>Constancias de conservacion:</strong> Podran emitirse sellos de tiempo y constancias para
+                acreditar la inalterabilidad de los mensajes de datos.</li>
+        </ul>
+
+        <h2>5. Propiedad Intelectual</h2>
+        <ul>
+            <li><strong>Plataforma:</strong> El codigo, interfaces, algoritmos y demas elementos de OrdenDigital
+                pertenecen a sus titulares.</li>
+            <li><strong>Documentos del usuario:</strong> OrdenDigital no adquiere derechos de propiedad o autoria sobre
+                el contenido de los expedientes cargados, salvo el uso temporal indispensable para prestar el servicio.</li>
+        </ul>
+
+        <h2>6. Legislacion Aplicable y Jurisdiccion</h2>
+        <p>Para cualquier controversia relacionada con el uso de la plataforma o la interpretación de estos términos,
+            las partes se sujetan a las leyes mexicanas vigentes y a los tribunales competentes del domicilio del
+            prestador del servicio en México, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 OrdenDigital. Todos los derechos reservados.
+    </footer>
+</body>
+
+</html>
